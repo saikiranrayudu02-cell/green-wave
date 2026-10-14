@@ -1,0 +1,8 @@
+# GREENWAVE — Camera perception backend dependencies (Step 8)
+# Install: python3.11 -m pip install -r backend/requirements.txt
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+ultralytics>=8.0.0
+opencv-python-headless>=4.8.0
+numpy>=1.24.0,<2.0.0
+pydantic>=2.0.0

@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-night-950 font-sans text-slate-300 antialiased;
+  font-feature-settings: 'cv02', 'cv03', 'cv11';
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: rgba(56, 196, 224, 0.25);
+  color: #e8f4f8;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1c2a49 transparent;
+}
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #1c2a49;
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- ambulance emergency beacons ----------------------------------------- */
+@keyframes beaconFlash {
+  0%,
+  49.9% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0.12;
+  }
+}
+.beacon-a {
+  animation: beaconFlash 0.72s steps(1) infinite;
+}
+.beacon-b {
+  animation: beaconFlash 0.72s steps(1) infinite reverse;
+}
+
+@keyframes haloPulse {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.3);
+  }
+}
+.halo-pulse {
+  animation: haloPulse 1.7s ease-in-out infinite;
+}
+
+/* --- corridor wave: travelling dashes along the SVG stroke ----------------- */
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: -36;
+  }
+}
+.flow-dash {
+  animation: flowDash 0.9s linear infinite;
+}
+
+/* --- incident / danger pulsing --------------------------------------------- */
+@keyframes dangerGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.danger-glow {
+  animation: dangerGlow 1.05s ease-in-out infinite;
+}
+
+@keyframes ringSpread {
+  0% {
+    opacity: 0.9;
+    transform: scale(0.35);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+.ring-spread {
+  animation: ringSpread 1.5s ease-out infinite;
+}
+
+/* --- congestion queue creeping forward on incident segments ------------- */
+@keyframes queueFlow {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+.queue-flow {
+  animation: queueFlow 1.5s linear infinite;
+}
+
+/* --- slow status "breathing" for corridor hold chips -------------------- */
+@keyframes holdBreathe {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(47, 224, 138, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(47, 224, 138, 0.6);
+  }
+}
+.hold-breathe {
+  animation: holdBreathe 1.6s ease-in-out infinite;
+}
+
+/* --- preparing-wave chips: gentle cyan breathing, slower than a hold ----- */
+@keyframes prepBreathe {
+  0%,
+  100% {
+    box-shadow: 0 0 3px rgba(56, 196, 224, 0);
+  }
+  50% {
+    box-shadow: 0 0 9px rgba(56, 196, 224, 0.35);
+  }
+}
+.prep-breathe {
+  animation: prepBreathe 2.2s ease-in-out infinite;
+}
+
+/* --- thin scanline sheen used on header strips ------------------------------ */
+@keyframes scanSheen {
+  0% {
+    transform: translateX(-120%);
+  }
+  60%,
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+/* subtle blueprint grid for the map backdrop */
+.map-grid {
+  background-image:
+    linear-gradient(rgba(120, 150, 200, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 150, 200, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
